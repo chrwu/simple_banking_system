@@ -64,3 +64,5 @@ Simple Banking System is a basic banking system implemented using FastAPI, Postg
    TOTAL               184     37    80%
    ========== 17 passed, 2 warnings in 1.26s ==============================================
    ```
+   
+7. Once the service is up and running, API document will be provided: http://localhost:8000/docs
