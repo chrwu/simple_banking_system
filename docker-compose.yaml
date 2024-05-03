@@ -1,0 +1,24 @@
+services:
+  # FastAPI service
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db  # Ensure PostgreSQL is ready before FastAPI starts
+    environment:
+      DATABASE_URL: "postgresql+asyncpg://postgres:postgres@db:5432/simple_banking_system"
+
+  # PostgreSQL service
+  db:
+    image: postgres:15  # Ensure PostgreSQL version 15
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "simple_banking_system"
+    volumes:
+      - pgdata:/var/lib/postgresql/data  # Persistent volume for PostgreSQL data
+
+volumes:
+  pgdata:  # This is the persistent volume
+    driver: local
